@@ -6,9 +6,17 @@ import { prepareInstructions } from "~/constants";
 import { convertPdfToImage } from "~/lib/pdf2img";
 import { usePuterStore } from "~/lib/puter";
 import { generateUUID } from "~/lib/utils";
+import type { Route } from "./+types/home";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Smart ATS Analyzer | Upload" },
+    { name: "description", content: "Upload your resume!" },
+  ];
+}
 
 const upload = () => {
-  const { auth, isLoading, fs, ai, kv } = usePuterStore();
+  const { fs, ai, kv } = usePuterStore();
   const navigate = useNavigate();
 
   const [isProcessing, setIsProcessing] = useState(false);
